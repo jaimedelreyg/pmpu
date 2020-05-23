@@ -1,15 +1,15 @@
-# ppu
-Welcome to the Posit Processing Unit repository
+#Posit Multi-Processing Unit repository
+Welcome to the Posit Multi-Processing Unit repository
 
-RiscV platforms supported:
+0. RiscV platforms supported:
   -LowRisc's Ibex
   
- Prerequisites:
+1. Prerequisites:
   - FuseSoc
   - Verilog
   
- How to Build:
-  -Ibex:
+2. How to Build:
+  - Ibex:
   ```
       cd Ibex
       fusesoc library add pvp_posit_cooprocessor .
