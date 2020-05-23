@@ -16,13 +16,8 @@ Welcome to the PSC repository.
    - LowRisc's Ibex:
    
       We need first to download the Ibex RiscV Core at [LowRisc's repository](https://github.com/lowRISC/ibex/)
-  ```
-      cd Ibex
-      fusesoc library add psc_posit_cooprocessor .
-      fusesoc library add ibex "path to lowrisc's ibex folder"
-      fusesoc --config=fusesoc.conf run --target=sim --setup --build psc:ibex:ibex_simple_system --RV32M=1 --RV32E=0
-      make -C "testbench folder" -> in case of default test "sw/ibex/posit_cooprocessor_ini_test"
-      ./build/lowrisc_ibex_ibex_simple_system_0/sim-verilator/Vibex_simple_system -t --meminit=ram,"path to test's .elf file"
+  ```chmod +x main.sh
+     ./main.sh
   ```
 
 ## Coming Soon
