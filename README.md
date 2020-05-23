@@ -15,7 +15,7 @@ Welcome to the PSC repository.
 2. How to Build:
    - LowRisc's Ibex:
    
-      We need first to download the Ibex RiscV Core at [LowRisc's repository](https://github.com/lowRISC/ibex/)
+      We need first to download the [Ibex RiscV Core] (https://github.com/ancral/Ibex_PSC/)
   ```
       chmod +x main.sh
      ./main.sh
