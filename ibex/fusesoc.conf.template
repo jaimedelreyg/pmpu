@@ -1,0 +1,12 @@
+[library.ibex]
+location = $PATH_IBEX
+sync-uri = $PATH_IBEX
+sync-type = local
+auto-sync = true
+
+[library.psc_posit_cooprocessor]
+location = $PATH_ABS
+sync-uri = $PATH_ABS
+sync-type = local
+auto-sync = true
+

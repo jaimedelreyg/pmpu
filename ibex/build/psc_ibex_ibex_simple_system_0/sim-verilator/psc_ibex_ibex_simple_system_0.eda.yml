@@ -1,0 +1,176 @@
+dependencies:
+  lowrisc:dv_verilator:ibex_pcounts:0: []
+  lowrisc:dv_verilator:memutil_verilator:0: ['lowrisc:dv_verilator:simutil_verilator:0']
+  lowrisc:dv_verilator:simutil_verilator:0: []
+  lowrisc:ibex:check_tool_requirements:0.1: []
+  lowrisc:ibex:ibex_core:0.1: ['lowrisc:ibex:check_tool_requirements:0.1', 'lowrisc:ibex:ibex_icache:0.1',
+    'lowrisc:ibex:ibex_pkg:0.1', 'lowrisc:prim:assert:0.1']
+  lowrisc:ibex:ibex_core_tracing:0.1: ['lowrisc:ibex:ibex_core:0.1', 'lowrisc:ibex:ibex_tracer:0.1']
+  lowrisc:ibex:ibex_icache:0.1: ['lowrisc:ibex:sim_shared:0']
+  lowrisc:ibex:ibex_pkg:0.1: []
+  lowrisc:ibex:ibex_tracer:0.1: ['lowrisc:ibex:ibex_pkg:0.1', 'lowrisc:prim:assert:0.1']
+  lowrisc:ibex:sim_shared:0: ['lowrisc:prim:assert:0.1']
+  lowrisc:prim:assert:0.1: []
+  psc:ibex:ibex_simple_system:0: ['lowrisc:dv_verilator:ibex_pcounts:0', 'lowrisc:dv_verilator:memutil_verilator:0',
+    'lowrisc:dv_verilator:simutil_verilator:0', 'lowrisc:ibex:ibex_core_tracing:0.1',
+    'lowrisc:ibex:sim_shared:0', 'psc:ibex:posit_cooprocessor:0']
+  psc:ibex:posit_cooprocessor:0: ['lowrisc:prim:assert:0.1']
+files:
+- {core: 'lowrisc:dv_verilator:ibex_pcounts:0', file_type: cppSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_dv_verilator_ibex_pcounts_0/cpp/ibex_pcounts.cc}
+- {core: 'lowrisc:dv_verilator:ibex_pcounts:0', file_type: cppSource, is_include_file: true,
+  logical_name: '', name: ../src/lowrisc_dv_verilator_ibex_pcounts_0/cpp/ibex_pcounts.h}
+- {core: 'lowrisc:dv_verilator:simutil_verilator:0', file_type: cppSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_dv_verilator_simutil_verilator_0/cpp/verilator_sim_ctrl.cc}
+- {core: 'lowrisc:dv_verilator:simutil_verilator:0', file_type: cppSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_dv_verilator_simutil_verilator_0/cpp/verilated_toplevel.cc}
+- {core: 'lowrisc:dv_verilator:simutil_verilator:0', file_type: cppSource, is_include_file: true,
+  logical_name: '', name: ../src/lowrisc_dv_verilator_simutil_verilator_0/cpp/verilator_sim_ctrl.h}
+- {core: 'lowrisc:dv_verilator:simutil_verilator:0', file_type: cppSource, is_include_file: true,
+  logical_name: '', name: ../src/lowrisc_dv_verilator_simutil_verilator_0/cpp/verilated_toplevel.h}
+- {core: 'lowrisc:dv_verilator:simutil_verilator:0', file_type: cppSource, is_include_file: true,
+  logical_name: '', name: ../src/lowrisc_dv_verilator_simutil_verilator_0/cpp/sim_ctrl_extension.h}
+- {core: 'lowrisc:ibex:check_tool_requirements:0.1', file_type: '', is_include_file: false,
+  logical_name: '', name: util/check_tool_requirements.py}
+- {core: 'lowrisc:ibex:check_tool_requirements:0.1', file_type: '', is_include_file: false,
+  logical_name: '', name: tool_requirements.py}
+- {core: 'lowrisc:ibex:ibex_pkg:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_pkg_0.1/rtl/ibex_pkg.sv}
+- {core: 'lowrisc:prim:assert:0.1', file_type: systemVerilogSource, is_include_file: true,
+  logical_name: '', name: ../src/lowrisc_prim_assert_0.1/rtl/prim_assert.sv}
+- {core: 'lowrisc:dv_verilator:memutil_verilator:0', file_type: cppSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_dv_verilator_memutil_verilator_0/cpp/verilator_memutil.cc}
+- {core: 'lowrisc:dv_verilator:memutil_verilator:0', file_type: cppSource, is_include_file: true,
+  logical_name: '', name: ../src/lowrisc_dv_verilator_memutil_verilator_0/cpp/verilator_memutil.h}
+- {core: 'lowrisc:ibex:ibex_tracer:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_tracer_0.1/rtl/ibex_tracer_pkg.sv}
+- {core: 'lowrisc:ibex:ibex_tracer:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_tracer_0.1/rtl/ibex_tracer.sv}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/prim_clock_gating.sv}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/prim_generic_ram_1p.sv}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/prim_secded_28_22_enc.sv}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/prim_secded_28_22_dec.sv}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/prim_secded_72_64_enc.sv}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/prim_secded_72_64_dec.sv}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/ram_1p.sv}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/ram_2p.sv}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/bus.sv}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/sim/simulator_ctrl.sv}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/timer.sv}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/posit_op/posit_add.v}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/posit_op/posit_mult.v}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/posit_op/posit_div.v}
+- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/posit_op/conv.sv}
+- {core: 'psc:ibex:posit_cooprocessor:0', file_type: verilogSource, is_include_file: false,
+  logical_name: '', name: ../src/psc_ibex_posit_cooprocessor_0/../rtl/global_memory.v}
+- {core: 'psc:ibex:posit_cooprocessor:0', file_type: verilogSource, is_include_file: false,
+  logical_name: '', name: ../src/psc_ibex_posit_cooprocessor_0/../rtl/register_file.v}
+- {core: 'psc:ibex:posit_cooprocessor:0', file_type: verilogSource, is_include_file: false,
+  logical_name: '', name: ../src/psc_ibex_posit_cooprocessor_0/../rtl/posit_unit.v}
+- {core: 'psc:ibex:posit_cooprocessor:0', file_type: verilogSource, is_include_file: false,
+  logical_name: '', name: ../src/psc_ibex_posit_cooprocessor_0/../rtl/posit_vector_processor.v}
+- {core: 'psc:ibex:posit_cooprocessor:0', file_type: verilogSource, is_include_file: false,
+  logical_name: '', name: ../src/psc_ibex_posit_cooprocessor_0/../rtl/posit_div.v}
+- {core: 'psc:ibex:posit_cooprocessor:0', file_type: verilogSource, is_include_file: false,
+  logical_name: '', name: ../src/psc_ibex_posit_cooprocessor_0/../rtl/posit_mult.v}
+- {core: 'psc:ibex:posit_cooprocessor:0', file_type: verilogSource, is_include_file: false,
+  logical_name: '', name: ../src/psc_ibex_posit_cooprocessor_0/../rtl/posit_add.v}
+- {core: 'lowrisc:ibex:ibex_icache:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_icache_0.1/rtl/ibex_icache.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: vlt, is_include_file: false, logical_name: '',
+  name: ../src/lowrisc_ibex_ibex_core_0.1/lint/verilator_waiver.vlt}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_alu.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_compressed_decoder.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_controller.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_cs_registers.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_counters.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_decoder.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_ex_block.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_fetch_fifo.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_id_stage.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_if_stage.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_load_store_unit.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_multdiv_fast.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_multdiv_slow.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_prefetch_buffer.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_pmp.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_wb_stage.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_register_file_ff.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_core.sv}
+- {core: 'lowrisc:ibex:ibex_core_tracing:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_tracing_0.1/rtl/ibex_core_tracing.sv}
+- {core: 'psc:ibex:ibex_simple_system:0', file_type: vlt, is_include_file: false,
+  logical_name: '', name: ../src/psc_ibex_ibex_simple_system_0/lint/verilator_waiver.vlt}
+- {core: 'psc:ibex:ibex_simple_system:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/psc_ibex_ibex_simple_system_0/rtl/ibex_simple_system.sv}
+- {core: 'psc:ibex:ibex_simple_system:0', file_type: cppSource, is_include_file: false,
+  logical_name: '', name: ../src/psc_ibex_ibex_simple_system_0/ibex_simple_system.cc}
+hooks:
+  pre_build:
+  - cmd: [python3, util/check_tool_requirements.py]
+    env: {FILES_ROOT: ../src/lowrisc_ibex_check_tool_requirements_0.1}
+    name: check_tool_requirements
+name: psc_ibex_ibex_simple_system_0
+parameters:
+  BranchTargetALU: {datatype: int, default: 0, description: Enables seperate branch
+      target ALU (increasing branch performance EXPERIMENTAL), paramtype: vlogparam}
+  MultiplierImplementation: {datatype: str, default: fast, description: 'Multiplier
+      implementation. Valid values: fast, slow, single-cycle', paramtype: vlogparam}
+  PMPEnable: {datatype: int, default: 0, description: Enable PMP, paramtype: vlogparam}
+  PMPGranularity: {datatype: int, default: 0, description: 'Granularity of NAPOT range,
+      0 = 4 byte, 1 = byte, 2 = 16 byte, 3 = 32 byte etc', paramtype: vlogparam}
+  PMPNumRegions: {datatype: int, default: 4, description: Number of PMP regions, paramtype: vlogparam}
+  RV32B: {datatype: int, default: 0, description: 'Enable the B ISA extension (bit
+      manipulation EXPERIMENTAL) [0/1]', paramtype: vlogparam}
+  RV32E: {datatype: int, default: 0, description: 'Enable the E ISA extension (reduced
+      register set) [0/1]', paramtype: vlogparam}
+  RV32M: {datatype: int, default: 1, description: 'Enable the M ISA extension (hardware
+      multiply/divide) [0/1]', paramtype: vlogparam}
+  RVFI: {datatype: bool, default: true, paramtype: vlogdefine}
+  SRAM_INIT_FILE: {datatype: str, description: Path to a vmem file to initialize the
+      RAM with, paramtype: vlogdefine}
+  WritebackStage: {datatype: int, default: 0, description: Enables third pipeline
+      stage (EXPERIMENTAL), paramtype: vlogparam}
+tool_options:
+  verilator:
+    mode: cc
+    verilator_options: [--trace, --trace-fst, --trace-structs, --trace-params, --trace-max-array
+        1024, -CFLAGS "-std=c++11 -Wall -DVM_TRACE_FMT_FST -DTOPLEVEL_NAME=ibex_simple_system
+        -g -O0", -LDFLAGS "-pthread -lutil -lelf", -Wall, -Wno-PINCONNECTEMPTY, -Wno-fatal,
+      --unroll-count 72]
+toplevel: ibex_simple_system
+version: 0.2.1
+vpi: []
