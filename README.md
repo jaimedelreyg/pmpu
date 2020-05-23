@@ -16,7 +16,8 @@ Welcome to the PSC repository.
    - LowRisc's Ibex:
    
       We need first to download the Ibex RiscV Core at [LowRisc's repository](https://github.com/lowRISC/ibex/)
-  ```chmod +x main.sh
+  ```
+      chmod +x main.sh
      ./main.sh
   ```
 
