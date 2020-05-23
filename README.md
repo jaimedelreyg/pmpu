@@ -2,6 +2,9 @@
 Welcome to the Posit Multi-Processing Unit repository.
 
 PPMU is a stream cooprocessor which works with Posits. The cooprocessor uses Manish Kumar's [PaCogen](https://github.com/manish-kj/PACoGen) Hardware Project for posit calculations.
+
+RTL Diagram -> Coming soon
+Custom ISA description -> Coming Soon
    
 0. RiscV platforms supported:
    - LowRisc's Ibex
