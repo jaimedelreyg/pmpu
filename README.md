@@ -12,7 +12,7 @@ Welcome to the Posit Multi-Processing Unit repository
    - Ibex:
   ```
       cd Ibex
-      fusesoc library add pvp_posit_cooprocessor .
+      fusesoc library add ppmu_posit_cooprocessor .
       fusesoc library add ibex "path to lowrisc's ibex folder"
       fusesoc --config=fusesoc.conf run --target=sim --setup --build lowrisc:ibex:ibex_simple_system --RV32M=1 --RV32E=0
       make -C "testbench folder" -> in case of default test "sw/ibex/posit_cooprocessor_ini_test"
