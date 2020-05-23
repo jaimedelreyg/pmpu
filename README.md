@@ -2,7 +2,7 @@
 Welcome to the PSC repository.
 
 ## Description
-- PSC is a stream cooprocessor which works with Posits. The cooprocessor uses Manish Kumar's [PaCogen](https://github.com/manish-kj/PACoGen) Hardware Project for posit calculations. Thanks Manish!
+- PSC is a stream cooprocessor which works with Posits. The cooprocessor uses Manish Kumar's and Hayden K.-H. So's [PaCogen](https://github.com/manish-kj/PACoGen) Hardware Project for posit calculations. Also this cooprocessor works with LowRisc's Ibex processor and his "Simple System", Thanks for the Lowrisc's Community.
 
 ## Getting Started
 0. RiscV platforms supported:
@@ -13,7 +13,9 @@ Welcome to the PSC repository.
    - Verilog
   
 2. How to Build:
-   - Ibex:
+   - LowRisc's Ibex:
+   
+      We need first to download the Ibex RiscV Core at [LowRisc's repository](https://github.com/lowRISC/ibex/)
   ```
       cd Ibex
       fusesoc library add psc_posit_cooprocessor .
