@@ -14,10 +14,18 @@
 #include "Vibex_simple_system__Dpi.h"
 #include "Vibex_simple_system.h"
 
+#ifndef _VL_DPIDECL_mhpmcounter_get
+#define _VL_DPIDECL_mhpmcounter_get
+long long mhpmcounter_get(int index) {
+    // DPI export at ../src/psc_ibex_ibex_simple_system_0/rtl/ibex_simple_system.sv:269
+    return Vibex_simple_system::mhpmcounter_get(index);
+}
+#endif
+
 #ifndef _VL_DPIDECL_simutil_verilator_memload
 #define _VL_DPIDECL_simutil_verilator_memload
 void simutil_verilator_memload(const char* file) {
-    // DPI export at ../src/lowrisc_ibex_sim_shared_0/./rtl/ram_2p.sv:101
+    // DPI export at ../src/lowrisc_ibex_sim_shared_0/./rtl/ram_2p.sv:104
     return Vibex_simple_system::simutil_verilator_memload(file);
 }
 #endif
@@ -25,7 +33,7 @@ void simutil_verilator_memload(const char* file) {
 #ifndef _VL_DPIDECL_simutil_verilator_set_mem
 #define _VL_DPIDECL_simutil_verilator_set_mem
 int simutil_verilator_set_mem(int index, const svLogicVecVal* val) {
-    // DPI export at ../src/lowrisc_ibex_sim_shared_0/./rtl/ram_2p.sv:107
+    // DPI export at ../src/lowrisc_ibex_sim_shared_0/./rtl/ram_2p.sv:110
     return Vibex_simple_system::simutil_verilator_set_mem(index, val);
 }
 #endif

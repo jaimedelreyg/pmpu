@@ -25,9 +25,9 @@ module conv #(
   //parameter Bs=log2(N);
   parameter es = 2;
 
-//  posit_add #(.N(N), .es(es)) padd (add1, add2, start, out1, inf, zero, done);
-  posit_mult #(.N(N), .es(es)) pmul (mul1, mul2, start, out2, inf, zero, done);
-////  posit_div #(.N(N), .es(es)) pdiv (div1, div2, start, out3, inf, zero, done);
+  posit_add #(.N(N), .es(es)) padd (add1, add2, start, out1, inf, zero, done);
+//////////  posit_mult #(.N(N), .es(es)) pmul (mul1, mul2, start, out2, inf, zero, done);
+//////////////  posit_div #(.N(N), .es(es)) pdiv (div1, div2, start, out3, inf, zero, done);
 
   logic        rvalid_d, rvalid_q;
   logic [N-1:0] a_d, add1 = 0, mul1 = 0, div1 = 0;

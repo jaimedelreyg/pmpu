@@ -13,15 +13,17 @@
 `include "prim_assert.sv"
 
 module ibex_cs_registers #(
-    parameter bit          DbgTriggerEn     = 0,
-    parameter bit          ICache           = 1'b0,
-    parameter int unsigned MHPMCounterNum   = 10,
-    parameter int unsigned MHPMCounterWidth = 40,
-    parameter bit          PMPEnable        = 0,
-    parameter int unsigned PMPGranularity   = 0,
-    parameter int unsigned PMPNumRegions    = 4,
-    parameter bit          RV32E            = 0,
-    parameter bit          RV32M            = 0
+    parameter bit          DbgTriggerEn      = 0,
+    parameter bit          DataIndTiming     = 1'b0,
+    parameter bit          DummyInstructions = 1'b0,
+    parameter bit          ICache            = 1'b0,
+    parameter int unsigned MHPMCounterNum    = 10,
+    parameter int unsigned MHPMCounterWidth  = 40,
+    parameter bit          PMPEnable         = 0,
+    parameter int unsigned PMPGranularity    = 0,
+    parameter int unsigned PMPNumRegions     = 4,
+    parameter bit          RV32E             = 0,
+    parameter bit          RV32M             = 0
 ) (
     // Clock and Reset
     input  logic                 clk_i,
@@ -79,6 +81,11 @@ module ibex_cs_registers #(
     input  logic [31:0]          pc_wb_i,
 
     // CPU control bits
+    output logic                 data_ind_timing_o,
+    output logic                 dummy_instr_en_o,
+    output logic [2:0]           dummy_instr_mask_o,
+    output logic                 dummy_instr_seed_en_o,
+    output logic [31:0]          dummy_instr_seed_o,
     output logic                 icache_enable_o,
 
     // Exception save/restore
@@ -158,7 +165,10 @@ module ibex_cs_registers #(
 
   // CPU control register fields
   typedef struct packed {
-    logic [30:0] unused_ctrl;
+    logic [31:6] unused_ctrl;
+    logic [2:0]  dummy_instr_mask;
+    logic        dummy_instr_en;
+    logic        data_ind_timing;
     logic        icache_enable;
   } CpuCtrl_t;
 
@@ -417,6 +427,11 @@ module ibex_cs_registers #(
         csr_rdata_int = {cpuctrl_rdata};
       end
 
+      // Custom CSR for LFSR re-seeding (cannot be read)
+      CSR_SECURESEED: begin
+        csr_rdata_int = '0;
+      end
+
       default: begin
         illegal_csr = 1'b1;
       end
@@ -620,22 +635,19 @@ module ibex_cs_registers #(
 
   // CSR operation logic
   always_comb begin
-    csr_wreq = csr_op_en_i;
-
     unique case (csr_op_i)
       CSR_OP_WRITE: csr_wdata_int =  csr_wdata_i;
       CSR_OP_SET:   csr_wdata_int =  csr_wdata_i | csr_rdata_o;
       CSR_OP_CLEAR: csr_wdata_int = ~csr_wdata_i & csr_rdata_o;
-      CSR_OP_READ: begin
-        csr_wdata_int = csr_wdata_i;
-        csr_wreq      = 1'b0;
-      end
-      default: begin
-        csr_wdata_int = csr_wdata_i;
-        csr_wreq      = 1'b0;
-      end
+      CSR_OP_READ:  csr_wdata_int = csr_wdata_i;
+      default:      csr_wdata_int = csr_wdata_i;
     endcase
   end
+
+  assign csr_wreq = csr_op_en_i &
+    (csr_op_i inside {CSR_OP_WRITE,
+                      CSR_OP_SET,
+                      CSR_OP_CLEAR});
 
   // only write CSRs during one clock cycle
   assign csr_we_int  = csr_wreq & ~illegal_csr_insn_o;
@@ -860,6 +872,11 @@ module ibex_cs_registers #(
   // event selection (hardwired) & control
   always_comb begin : gen_mhpmcounter_incr
 
+    // Assign inactive counters (first to prevent latch inference)
+    for (int unsigned i=0; i<32; i++) begin : gen_mhpmcounter_incr_inactive
+      mhpmcounter_incr[i] = 1'b0;
+    end
+
     // When adding or altering performance counter meanings and default
     // mappings please update dv/verilator/pcount/cpp/ibex_pcounts.cc
     // appropriately.
@@ -878,11 +895,6 @@ module ibex_cs_registers #(
     mhpmcounter_incr[10] = instr_ret_compressed_i; // num of compressed instr
     mhpmcounter_incr[11] = mul_wait_i;             // cycles waiting for multiply
     mhpmcounter_incr[12] = div_wait_i;             // cycles waiting for divide
-
-    // inactive counters
-    for (int unsigned i=3+MHPMCounterNum; i<32; i++) begin : gen_mhpmcounter_incr_inactive
-      mhpmcounter_incr[i] = 1'b0;
-    end
   end
 
   // event selector (hardwired, 0 means no event)
@@ -1040,6 +1052,78 @@ module ibex_cs_registers #(
   // Cast register write data
   assign cpuctrl_wdata = CpuCtrl_t'(csr_wdata_int);
 
+  // Generate fixed time execution bit
+  if (DataIndTiming) begin : gen_dit
+    logic data_ind_timing_d, data_ind_timing_q;
+
+    assign data_ind_timing_d = (csr_we_int && (csr_addr == CSR_CPUCTRL)) ?
+      cpuctrl_wdata.data_ind_timing : data_ind_timing_q;
+
+    always_ff @(posedge clk_i or negedge rst_ni) begin
+      if (!rst_ni) begin
+        data_ind_timing_q <= 1'b0; // disabled on reset
+      end else begin
+        data_ind_timing_q <= data_ind_timing_d;
+      end
+    end
+
+    assign cpuctrl_rdata.data_ind_timing = data_ind_timing_q;
+
+  end else begin : gen_no_dit
+    // tieoff for the unused bit
+    logic unused_dit;
+    assign unused_dit = cpuctrl_wdata.data_ind_timing;
+
+    // field will always read as zero if not configured
+    assign cpuctrl_rdata.data_ind_timing = 1'b0;
+  end
+
+  assign data_ind_timing_o = cpuctrl_rdata.data_ind_timing;
+
+  // Generate dummy instruction signals
+  if (DummyInstructions) begin : gen_dummy
+    logic       dummy_instr_en_d, dummy_instr_en_q;
+    logic [2:0] dummy_instr_mask_d, dummy_instr_mask_q;
+
+    assign dummy_instr_en_d   = (csr_we_int && (csr_addr == CSR_CPUCTRL)) ?
+        cpuctrl_wdata.dummy_instr_en : dummy_instr_en_q;
+
+    assign dummy_instr_mask_d = (csr_we_int && (csr_addr == CSR_CPUCTRL)) ?
+        cpuctrl_wdata.dummy_instr_mask : dummy_instr_mask_q;
+
+    always_ff @(posedge clk_i or negedge rst_ni) begin
+      if (!rst_ni) begin
+        dummy_instr_en_q   <= 1'b0; // disabled on reset
+        dummy_instr_mask_q <= 3'b000;
+      end else begin
+        dummy_instr_en_q   <= dummy_instr_en_d;
+        dummy_instr_mask_q <= dummy_instr_mask_d;
+      end
+    end
+
+    assign cpuctrl_rdata.dummy_instr_en   = dummy_instr_en_q;
+    assign cpuctrl_rdata.dummy_instr_mask = dummy_instr_mask_q;
+    // Signal a write to the seed register
+    assign dummy_instr_seed_en_o = csr_we_int && (csr_addr == CSR_SECURESEED);
+    assign dummy_instr_seed_o    = csr_wdata_int;
+
+  end else begin : gen_no_dummy
+    // tieoff for the unused bit
+    logic       unused_dummy_en;
+    logic [2:0] unused_dummy_mask;
+    assign unused_dummy_en   = cpuctrl_wdata.dummy_instr_en;
+    assign unused_dummy_mask = cpuctrl_wdata.dummy_instr_mask;
+
+    // field will always read as zero if not configured
+    assign cpuctrl_rdata.dummy_instr_en   = 1'b0;
+    assign cpuctrl_rdata.dummy_instr_mask = 3'b000;
+    assign dummy_instr_seed_en_o          = 1'b0;
+    assign dummy_instr_seed_o             = '0;
+  end
+
+  assign dummy_instr_en_o   = cpuctrl_rdata.dummy_instr_en;
+  assign dummy_instr_mask_o = cpuctrl_rdata.dummy_instr_mask;
+
   // Generate icache enable bit
   if (ICache) begin : gen_icache_enable
     logic icache_enable_d, icache_enable_q;
@@ -1067,23 +1151,17 @@ module ibex_cs_registers #(
     assign cpuctrl_rdata.icache_enable = 1'b0;
   end
 
-  // tieoff for the currently unused bits of cpuctrl
-  logic [31:1] unused_cpuctrl;
-  assign unused_cpuctrl = {cpuctrl_wdata[31:1]};
-
   assign icache_enable_o = cpuctrl_rdata.icache_enable;
+
+  // tieoff for the currently unused bits of cpuctrl
+  logic [31:6] unused_cpuctrl;
+  assign unused_cpuctrl = {cpuctrl_wdata[31:6]};
+
 
   ////////////////
   // Assertions //
   ////////////////
 
-  // Selectors must be known/valid.
-  `ASSERT(IbexCsrOpValid, csr_op_i inside {
-      CSR_OP_READ,
-      CSR_OP_WRITE,
-      CSR_OP_SET,
-      CSR_OP_CLEAR
-      })
-  `ASSERT_KNOWN(IbexCsrWdataIntKnown, csr_wdata_int)
+  `ASSERT(IbexCsrOpEnRequiresAccess, csr_op_en_i |-> csr_access_i)
 
 endmodule

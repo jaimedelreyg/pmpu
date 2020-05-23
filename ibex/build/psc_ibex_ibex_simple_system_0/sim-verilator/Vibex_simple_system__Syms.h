@@ -15,6 +15,7 @@
 #include "Vibex_simple_system_data_extract_v1.h"
 
 // DPI TYPES for DPI Export callbacks (Internal use)
+typedef void (*Vibex_simple_system__Vcb_mhpmcounter_get_t) (Vibex_simple_system__Syms* __restrict vlSymsp, const IData/*31:0*/ index, QData/*63:0*/(&  mhpmcounter_get__Vfuncrtn));
 typedef void (*Vibex_simple_system__Vcb_simutil_verilator_memload_t) (Vibex_simple_system__Syms* __restrict vlSymsp, const std::string(&  file));
 typedef void (*Vibex_simple_system__Vcb_simutil_verilator_set_mem_t) (Vibex_simple_system__Syms* __restrict vlSymsp, const IData/*31:0*/ index, const IData/*31:0*/ val, IData/*31:0*/(&  simutil_verilator_set_mem__Vfuncrtn));
 

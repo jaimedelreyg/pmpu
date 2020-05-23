@@ -4,13 +4,17 @@ dependencies:
   lowrisc:dv_verilator:simutil_verilator:0: []
   lowrisc:ibex:check_tool_requirements:0.1: []
   lowrisc:ibex:ibex_core:0.1: ['lowrisc:ibex:check_tool_requirements:0.1', 'lowrisc:ibex:ibex_icache:0.1',
-    'lowrisc:ibex:ibex_pkg:0.1', 'lowrisc:prim:assert:0.1']
+    'lowrisc:ibex:ibex_pkg:0.1', 'lowrisc:prim:assert:0.1', 'lowrisc:prim:lfsr:0.1']
   lowrisc:ibex:ibex_core_tracing:0.1: ['lowrisc:ibex:ibex_core:0.1', 'lowrisc:ibex:ibex_tracer:0.1']
-  lowrisc:ibex:ibex_icache:0.1: ['lowrisc:ibex:sim_shared:0']
+  lowrisc:ibex:ibex_icache:0.1: ['lowrisc:prim:ram_1p:0.1', 'lowrisc:prim:secded:0.1']
   lowrisc:ibex:ibex_pkg:0.1: []
   lowrisc:ibex:ibex_tracer:0.1: ['lowrisc:ibex:ibex_pkg:0.1', 'lowrisc:prim:assert:0.1']
-  lowrisc:ibex:sim_shared:0: ['lowrisc:prim:assert:0.1']
+  lowrisc:ibex:sim_shared:0: ['lowrisc:prim:assert:0.1', 'lowrisc:prim_generic:ram_1p:0']
   lowrisc:prim:assert:0.1: []
+  lowrisc:prim:lfsr:0.1: []
+  lowrisc:prim:ram_1p:0.1: ['lowrisc:prim_generic:ram_1p:0']
+  lowrisc:prim:secded:0.1: []
+  lowrisc:prim_generic:ram_1p:0: []
   psc:ibex:ibex_simple_system:0: ['lowrisc:dv_verilator:ibex_pcounts:0', 'lowrisc:dv_verilator:memutil_verilator:0',
     'lowrisc:dv_verilator:simutil_verilator:0', 'lowrisc:ibex:ibex_core_tracing:0.1',
     'lowrisc:ibex:sim_shared:0', 'psc:ibex:posit_cooprocessor:0']
@@ -38,6 +42,18 @@ files:
   logical_name: '', name: ../src/lowrisc_ibex_ibex_pkg_0.1/rtl/ibex_pkg.sv}
 - {core: 'lowrisc:prim:assert:0.1', file_type: systemVerilogSource, is_include_file: true,
   logical_name: '', name: ../src/lowrisc_prim_assert_0.1/rtl/prim_assert.sv}
+- {core: 'lowrisc:prim_generic:ram_1p:0', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_prim_generic_ram_1p_0/rtl/prim_generic_ram_1p.sv}
+- {core: 'lowrisc:prim:lfsr:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_prim_lfsr_0.1/rtl/prim_lfsr.sv}
+- {core: 'lowrisc:prim:secded:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_prim_secded_0.1/rtl/prim_secded_28_22_dec.sv}
+- {core: 'lowrisc:prim:secded:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_prim_secded_0.1/rtl/prim_secded_28_22_enc.sv}
+- {core: 'lowrisc:prim:secded:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_prim_secded_0.1/rtl/prim_secded_72_64_dec.sv}
+- {core: 'lowrisc:prim:secded:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_prim_secded_0.1/rtl/prim_secded_72_64_enc.sv}
 - {core: 'lowrisc:dv_verilator:memutil_verilator:0', file_type: cppSource, is_include_file: false,
   logical_name: '', name: ../src/lowrisc_dv_verilator_memutil_verilator_0/cpp/verilator_memutil.cc}
 - {core: 'lowrisc:dv_verilator:memutil_verilator:0', file_type: cppSource, is_include_file: true,
@@ -48,16 +64,6 @@ files:
   logical_name: '', name: ../src/lowrisc_ibex_ibex_tracer_0.1/rtl/ibex_tracer.sv}
 - {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
   logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/prim_clock_gating.sv}
-- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
-  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/prim_generic_ram_1p.sv}
-- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
-  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/prim_secded_28_22_enc.sv}
-- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
-  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/prim_secded_28_22_dec.sv}
-- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
-  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/prim_secded_72_64_enc.sv}
-- {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
-  logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/prim_secded_72_64_dec.sv}
 - {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
   logical_name: '', name: ../src/lowrisc_ibex_sim_shared_0/./rtl/ram_1p.sv}
 - {core: 'lowrisc:ibex:sim_shared:0', file_type: systemVerilogSource, is_include_file: false,
@@ -126,6 +132,8 @@ files:
   logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_pmp.sv}
 - {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
   logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_wb_stage.sv}
+- {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
+  logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_dummy_instr.sv}
 - {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,
   logical_name: '', name: ../src/lowrisc_ibex_ibex_core_0.1/rtl/ibex_register_file_ff.sv}
 - {core: 'lowrisc:ibex:ibex_core:0.1', file_type: systemVerilogSource, is_include_file: false,

@@ -13,9 +13,11 @@ extern "C" {
     
     
     // DPI EXPORTS
-    // DPI export at ../src/lowrisc_ibex_sim_shared_0/./rtl/ram_2p.sv:101
+    // DPI export at ../src/psc_ibex_ibex_simple_system_0/rtl/ibex_simple_system.sv:269
+    extern long long mhpmcounter_get(int index);
+    // DPI export at ../src/lowrisc_ibex_sim_shared_0/./rtl/ram_2p.sv:104
     extern void simutil_verilator_memload(const char* file);
-    // DPI export at ../src/lowrisc_ibex_sim_shared_0/./rtl/ram_2p.sv:107
+    // DPI export at ../src/lowrisc_ibex_sim_shared_0/./rtl/ram_2p.sv:110
     extern int simutil_verilator_set_mem(int index, const svLogicVecVal* val);
     
 #ifdef __cplusplus

@@ -55,9 +55,10 @@ typedef enum logic [5:0] {
   ALU_SLO,
   ALU_ROR,
   ALU_ROL,
-  ALU_REV,
-  ALU_REV8,
-  ALU_ORCB,
+  ALU_GREV,
+  ALU_GORC,
+  ALU_SHFL,
+  ALU_UNSHFL,
 
   // Comparisons
   ALU_LT,
@@ -78,6 +79,11 @@ typedef enum logic [5:0] {
   ALU_PACKU,
   ALU_PACKH,
 
+  // Sign-Extend
+  // RV32B
+  ALU_SEXTB,
+  ALU_SEXTH,
+
   // Bitcounting
   // RV32B
   ALU_CLZ,
@@ -86,7 +92,44 @@ typedef enum logic [5:0] {
 
   // Set lower than
   ALU_SLT,
-  ALU_SLTU
+  ALU_SLTU,
+
+  // Ternary Bitmanip Operations
+  // RV32B
+  ALU_CMOV,
+  ALU_CMIX,
+  ALU_FSL,
+  ALU_FSR,
+
+  // Single-Bit Operations
+  // RV32B
+  ALU_SBSET,
+  ALU_SBCLR,
+  ALU_SBINV,
+  ALU_SBEXT,
+
+  // Bit Extract / Deposit
+  // RV32B
+  ALU_BEXT,
+  ALU_BDEP,
+
+  // Bit Field Place
+  // RV32B
+  ALU_BFP,
+
+  // Carry-less Multiply
+  // RV32B
+  ALU_CLMUL,
+  ALU_CLMULR,
+  ALU_CLMULH,
+
+  // Cyclic Redundancy Check
+  ALU_CRC32_B,
+  ALU_CRC32C_B,
+  ALU_CRC32_H,
+  ALU_CRC32C_H,
+  ALU_CRC32_W,
+  ALU_CRC32C_W
 } alu_op_e;
 
 typedef enum logic [1:0] {
@@ -413,7 +456,8 @@ typedef enum logic[11:0] {
   CSR_MHPMCOUNTER29H = 12'hB9D,
   CSR_MHPMCOUNTER30H = 12'hB9E,
   CSR_MHPMCOUNTER31H = 12'hB9F,
-  CSR_CPUCTRL        = 12'h7C0
+  CSR_CPUCTRL        = 12'h7C0,
+  CSR_SECURESEED     = 12'h7C1
 } csr_num_e;
 
 // CSR pmp-related offsets

@@ -63,6 +63,8 @@ VL_MODULE(Vibex_simple_system) {
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ctrl_busy;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__core_busy_q;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rf_we_lsu;
+        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__mult_sel_ex;
+        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__div_sel_ex;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__csr_access;
         CData/*1:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__csr_op;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__csr_op_en;
@@ -89,6 +91,10 @@ VL_MODULE(Vibex_simple_system) {
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_intr_q;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_set_trap_pc_d;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_set_trap_pc_q;
+        CData/*4:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_rs1_addr_d;
+        CData/*4:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_rs1_addr_q;
+        CData/*4:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_rs2_addr_d;
+        CData/*4:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_rs2_addr_q;
         CData/*4:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_rd_addr_q;
         CData/*4:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_rd_addr_d;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_rd_we_wb;
@@ -98,14 +104,14 @@ VL_MODULE(Vibex_simple_system) {
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__if_stage_i__DOT__instr_valid_id_q;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__if_stage_i__DOT__instr_new_id_d;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__if_stage_i__DOT__instr_new_id_q;
+    };
+    struct {
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__if_stage_i__DOT__fetch_valid;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__if_stage_i__DOT__fetch_err;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__if_stage_i__DOT__fetch_err_plus2;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__if_stage_i__DOT__illegal_c_insn;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__if_stage_i__DOT__gen_prefetch_buffer__DOT__prefetch_buffer_i__DOT__valid_new_req;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__if_stage_i__DOT__gen_prefetch_buffer__DOT__prefetch_buffer_i__DOT__valid_req;
-    };
-    struct {
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__if_stage_i__DOT__gen_prefetch_buffer__DOT__prefetch_buffer_i__DOT__valid_req_q;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__if_stage_i__DOT__gen_prefetch_buffer__DOT__prefetch_buffer_i__DOT__discard_req_d;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__if_stage_i__DOT__gen_prefetch_buffer__DOT__prefetch_buffer_i__DOT__discard_req_q;
@@ -137,6 +143,7 @@ VL_MODULE(Vibex_simple_system) {
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__branch_in_dec;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__branch_set_d;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__jump_in_dec;
+        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__jump_set_dec;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__jump_set;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__instr_first_cycle;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__instr_executing;
@@ -155,28 +162,26 @@ VL_MODULE(Vibex_simple_system) {
         CData/*1:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__alu_op_a_mux_sel;
         CData/*1:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__alu_op_a_mux_sel_dec;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__alu_op_b_mux_sel_dec;
+        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__stall_alu;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__imm_a_mux_sel;
         CData/*2:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__imm_b_mux_sel;
         CData/*2:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__imm_b_mux_sel_dec;
-        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__mult_en_id;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__mult_en_dec;
-        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__div_en_id;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__div_en_dec;
-        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__multdiv_sel_dec;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__multdiv_en_dec;
         CData/*1:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__multdiv_operator;
+    };
+    struct {
         CData/*1:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__multdiv_signed_mode;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__lsu_we;
         CData/*1:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__lsu_type;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__lsu_sign_ext;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__lsu_req;
-    };
-    struct {
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__lsu_req_dec;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__csr_pipe_flush;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__id_fsm_q;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__id_fsm_d;
-        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__g_branch_set_flopped__DOT__branch_set_q;
+        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__g_branch_set_flop__DOT__branch_set_q;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__decoder_i__DOT__illegal_insn;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__decoder_i__DOT__csr_illegal;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__decoder_i__DOT__rf_we;
@@ -209,11 +214,12 @@ VL_MODULE(Vibex_simple_system) {
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__controller_i__DOT__ebrk_insn;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__controller_i__DOT__csr_pipe_flush;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__controller_i__DOT__instr_fetch_err;
-        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__multdiv_en;
+        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__multdiv_sel;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__adder_op_b_negate;
-        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_extension;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__cmp_signed;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__cmp_result;
+        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_left;
+        CData/*5:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_amt;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__sign_a;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__sign_b;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__mult_valid;
@@ -225,9 +231,13 @@ VL_MODULE(Vibex_simple_system) {
         CData/*4:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__div_counter_d;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__mult_hold;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__div_hold;
+        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__div_by_zero_d;
+        CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__div_by_zero_q;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__mult_en_internal;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__div_en_internal;
         CData/*2:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__md_state_q;
+    };
+    struct {
         CData/*2:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__md_state_d;
         CData/*1:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__gen_multdiv_fast__DOT__mult_state_q;
         CData/*1:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__gen_multdiv_fast__DOT__mult_state_d;
@@ -236,8 +246,6 @@ VL_MODULE(Vibex_simple_system) {
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__load_store_unit_i__DOT__rdata_update;
         CData/*1:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__load_store_unit_i__DOT__rdata_offset_q;
         CData/*1:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__load_store_unit_i__DOT__data_type_q;
-    };
-    struct {
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__load_store_unit_i__DOT__data_sign_ext_q;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__load_store_unit_i__DOT__data_we_q;
         CData/*3:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__load_store_unit_i__DOT__data_be;
@@ -294,16 +302,16 @@ VL_MODULE(Vibex_simple_system) {
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__23__KET____DOT__g_counter_exists__DOT__we;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__24__KET____DOT__g_counter_exists__DOT__we;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__25__KET____DOT__g_counter_exists__DOT__we;
+    };
+    struct {
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__26__KET____DOT__g_counter_exists__DOT__we;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__27__KET____DOT__g_counter_exists__DOT__we;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__28__KET____DOT__g_counter_exists__DOT__we;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__insn_is_compressed;
-        CData/*3:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__data_accessed;
+        CData/*4:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__data_accessed;
         CData/*2:0*/ ibex_simple_system__DOT__u_simulator_ctrl__DOT__sim_finish;
         CData/*0:0*/ ibex_simple_system__DOT__u_timer__DOT__timer_we;
         CData/*0:0*/ ibex_simple_system__DOT__u_timer__DOT__mtimecmp_we;
-    };
-    struct {
         CData/*0:0*/ ibex_simple_system__DOT__u_timer__DOT__mtimecmph_we;
         CData/*0:0*/ ibex_simple_system__DOT__u_timer__DOT__interrupt_q;
         CData/*0:0*/ ibex_simple_system__DOT__u_timer__DOT__interrupt_d;
@@ -360,6 +368,8 @@ VL_MODULE(Vibex_simple_system) {
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__rf2rd2;
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__rf3rd1;
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__rf3rd2;
+    };
+    struct {
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__rf4rd1;
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__rf4rd2;
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__gbwd1;
@@ -368,8 +378,6 @@ VL_MODULE(Vibex_simple_system) {
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__gbwd4;
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__gbrd1;
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__gbrd2;
-    };
-    struct {
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__gbrd3;
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__gbrd4;
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__unit1_in1;
@@ -381,7 +389,7 @@ VL_MODULE(Vibex_simple_system) {
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__unit4_in1;
         SData/*15:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__unit4_in2;
         IData/*31:0*/ ibex_simple_system__DOT__instr_rdata;
-        IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__instr_rdata_id;
+        IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__instr_rdata_alu_id;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__pc_id;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rf_rdata_a;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rf_rdata_b;
@@ -420,11 +428,14 @@ VL_MODULE(Vibex_simple_system) {
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_result;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__operand_a_rev;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_result;
-        IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_extension_rvb;
+        IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_result_rev;
+        IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__bfp_mask_rev;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__bwlogic_result;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__op_denominator_q;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__op_numerator_q;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__op_quotient_q;
+    };
+    struct {
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__op_denominator_d;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__op_numerator_d;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__op_quotient_d;
@@ -434,8 +445,6 @@ VL_MODULE(Vibex_simple_system) {
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__load_store_unit_i__DOT__data_rdata_ext;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__load_store_unit_i__DOT__rdata_h_ext;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__load_store_unit_i__DOT__rdata_b_ext;
-    };
-    struct {
         WData/*1023:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__register_file_i__DOT__rf_reg[32];
         WData/*991:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__register_file_i__DOT__rf_reg_tmp[31];
         IData/*30:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__register_file_i__DOT__we_a_dec;
@@ -485,13 +494,14 @@ VL_MODULE(Vibex_simple_system) {
         IData/*31:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__q_rdata_o;
         IData/*31:0*/ ibex_simple_system__DOT__u_posit_cooprocessor__DOT__q_rvalid_o;
         QData/*63:0*/ ibex_simple_system__DOT__u_core__DOT__rvfi_order;
+        QData/*33:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__id_stage_i__DOT__imd_val_q;
         QData/*32:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__multdiv_alu_operand_b;
         QData/*32:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__multdiv_alu_operand_a;
         QData/*33:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_adder_result_ext;
         QData/*32:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_result_ext;
-        QData/*63:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_result_ext_rvb;
         QData/*33:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__accum;
-        QData/*33:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__intermediate_val_q;
+    };
+    struct {
         QData/*33:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__mac_res_d;
         QData/*33:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__op_remainder_d;
         QData/*32:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__genblk1__DOT__gen_multdiv_fast__DOT__multdiv_i__DOT__next_quotient;
@@ -500,8 +510,6 @@ VL_MODULE(Vibex_simple_system) {
         QData/*63:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcycle_counter_i__DOT__g_counter__BRA__0__KET____DOT__g_counter_exists__DOT__counter_d;
         QData/*63:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcycle_counter_i__DOT__g_counter__BRA__0__KET____DOT__g_counter_exists__DOT__counter_q;
         QData/*63:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__minstret_counter_i__DOT__g_counter__BRA__0__KET____DOT__g_counter_exists__DOT__counter_upd;
-    };
-    struct {
         QData/*63:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__minstret_counter_i__DOT__g_counter__BRA__0__KET____DOT__g_counter_exists__DOT__counter_load;
         QData/*63:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__minstret_counter_i__DOT__g_counter__BRA__0__KET____DOT__g_counter_exists__DOT__counter_d;
         QData/*63:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__minstret_counter_i__DOT__g_counter__BRA__0__KET____DOT__g_counter_exists__DOT__counter_q;
@@ -558,6 +566,8 @@ VL_MODULE(Vibex_simple_system) {
         QData/*39:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__12__KET____DOT__g_counter_exists__DOT__counter_d;
         QData/*39:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__12__KET____DOT__g_counter_exists__DOT__counter_q;
         QData/*63:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__13__KET____DOT__g_counter_exists__DOT__counter_upd;
+    };
+    struct {
         QData/*63:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__13__KET____DOT__g_counter_exists__DOT__counter_load;
         QData/*39:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__13__KET____DOT__g_counter_exists__DOT__counter_d;
         QData/*39:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__13__KET____DOT__g_counter_exists__DOT__counter_q;
@@ -566,8 +576,6 @@ VL_MODULE(Vibex_simple_system) {
         QData/*39:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__14__KET____DOT__g_counter_exists__DOT__counter_d;
         QData/*39:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__14__KET____DOT__g_counter_exists__DOT__counter_q;
         QData/*63:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__15__KET____DOT__g_counter_exists__DOT__counter_upd;
-    };
-    struct {
         QData/*63:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__15__KET____DOT__g_counter_exists__DOT__counter_load;
         QData/*39:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__15__KET____DOT__g_counter_exists__DOT__counter_d;
         QData/*39:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__15__KET____DOT__g_counter_exists__DOT__counter_q;
@@ -624,6 +632,8 @@ VL_MODULE(Vibex_simple_system) {
         QData/*39:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__28__KET____DOT__g_counter_exists__DOT__counter_d;
         QData/*39:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mcounters_variable_i__DOT__g_counter__BRA__28__KET____DOT__g_counter_exists__DOT__counter_q;
         QData/*63:0*/ ibex_simple_system__DOT__u_timer__DOT__mtime_q;
+    };
+    struct {
         QData/*63:0*/ ibex_simple_system__DOT__u_timer__DOT__mtime_d;
         QData/*63:0*/ ibex_simple_system__DOT__u_timer__DOT__mtimecmp_q;
         QData/*63:0*/ ibex_simple_system__DOT__u_timer__DOT__mtimecmp_d;
@@ -632,8 +642,6 @@ VL_MODULE(Vibex_simple_system) {
         IData/*31:0*/ ibex_simple_system__DOT__host_addr[1];
         CData/*0:0*/ ibex_simple_system__DOT__host_we[1];
         CData/*3:0*/ ibex_simple_system__DOT__host_be[1];
-    };
-    struct {
         IData/*31:0*/ ibex_simple_system__DOT__host_wdata[1];
         CData/*0:0*/ ibex_simple_system__DOT__host_rvalid[1];
         IData/*31:0*/ ibex_simple_system__DOT__host_rdata[1];
@@ -648,7 +656,6 @@ VL_MODULE(Vibex_simple_system) {
         CData/*0:0*/ ibex_simple_system__DOT__device_err[4];
         IData/*31:0*/ ibex_simple_system__DOT__cfg_device_addr_base[4];
         IData/*31:0*/ ibex_simple_system__DOT__cfg_device_addr_mask[4];
-        QData/*63:0*/ ibex_simple_system__DOT__mhpmcounter_vals[32];
         QData/*33:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__csr_pmp_addr[4];
         CData/*5:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__csr_pmp_cfg[4];
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__pmp_req_err[2];
@@ -661,8 +668,10 @@ VL_MODULE(Vibex_simple_system) {
         CData/*1:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_stage_mode[1];
         CData/*4:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_stage_rs1_addr[1];
         CData/*4:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_stage_rs2_addr[1];
+        CData/*4:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_stage_rs3_addr[1];
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_stage_rs1_rdata[1];
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_stage_rs2_rdata[1];
+        IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_stage_rs3_rdata[1];
         CData/*4:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_stage_rd_addr[1];
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_stage_rd_wdata[1];
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__rvfi_stage_pc_rdata[1];
@@ -703,62 +712,62 @@ VL_MODULE(Vibex_simple_system) {
         CData/*0:0*/ ibex_simple_system__DOT__u_bus__DOT____Vlvbound3;
         CData/*0:0*/ ibex_simple_system__DOT__u_bus__DOT____Vlvbound8;
         CData/*0:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__register_file_i__DOT____Vlvbound1;
-        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__10__imm;
-        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_compressed_store_insn__13__imm;
-        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__14__imm;
-        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_compressed_store_insn__15__imm;
-        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__21__imm;
-        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_sr_insn__24__shamt;
-        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_sr_insn__27__shamt;
-        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__42__imm;
-        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_sr_insn__45__shamt;
-        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_sr_insn__48__shamt;
-        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_ci_clui_insn__52__nzimm;
-        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_compressed_load_insn__55__imm;
-        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_ci_cli_insn__56__imm;
-        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_compressed_load_insn__57__imm;
-        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_ci_cslli_insn__62__shamt;
-        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_ci_caddi_insn__63__nzimm;
-        CData/*4:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_i_shift_insn__83__shamt;
+        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__11__imm;
+        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_compressed_store_insn__14__imm;
+        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__15__imm;
+        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_compressed_store_insn__16__imm;
+        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__22__imm;
+        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_sr_insn__25__shamt;
+        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_sr_insn__28__shamt;
+        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__43__imm;
+        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_sr_insn__46__shamt;
+        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_sr_insn__49__shamt;
+        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_ci_clui_insn__53__nzimm;
+        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_compressed_load_insn__56__imm;
+        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_ci_cli_insn__57__imm;
+        CData/*7:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_compressed_load_insn__58__imm;
+        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_ci_cslli_insn__63__shamt;
+        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_ci_caddi_insn__64__nzimm;
         CData/*4:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_i_shift_insn__84__shamt;
         CData/*4:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_i_shift_insn__85__shamt;
-        CData/*2:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_load_insn__121__size;
-        CData/*3:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_fence_description__127__bits;
+        CData/*4:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_i_shift_insn__86__shamt;
+        CData/*2:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_load_insn__122__size;
         CData/*3:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_fence_description__128__bits;
-        CData/*4:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_i_shift_insn__130__shamt;
+        CData/*3:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_fence_description__129__bits;
         CData/*4:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_i_shift_insn__131__shamt;
         CData/*4:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_i_shift_insn__132__shamt;
+        CData/*4:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_i_shift_insn__133__shamt;
+        CData/*5:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_i_funnelshift_insn__225__shamt;
         CData/*5:0*/ __Vtableidx1;
         CData/*5:0*/ __Vtableidx2;
         CData/*7:0*/ __Vtableidx3;
-        CData/*4:0*/ __Vtableidx4;
+        CData/*5:0*/ __Vtableidx4;
+        CData/*4:0*/ __Vtableidx5;
         CData/*0:0*/ __Vclklast__TOP__IO_RST_N;
         CData/*0:0*/ __Vclklast__TOP__ibex_simple_system__DOT__clk_sys;
         CData/*0:0*/ __Vclklast__TOP__ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__clk;
-        SData/*9:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_ci_caddi16sp_insn__51__nzimm;
-        SData/*9:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_ciw_insn__65__nzuimm;
-        SData/*11:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__96__csr;
-        SData/*11:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__97__csr_addr;
-        SData/*11:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__98__csr;
-        SData/*11:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__99__csr_addr;
-        SData/*11:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__100__csr;
-        SData/*11:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__101__csr_addr;
-        SData/*11:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__102__csr;
-        SData/*11:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__103__csr_addr;
-        SData/*11:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__104__csr;
-        SData/*11:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__105__csr_addr;
-        SData/*11:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__106__csr;
-        SData/*11:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__107__csr_addr;
+        SData/*9:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_ci_caddi16sp_insn__52__nzimm;
+        SData/*9:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_ciw_insn__66__nzuimm;
+        SData/*11:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__97__csr;
+        SData/*11:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__98__csr_addr;
+        SData/*11:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__99__csr;
+        SData/*11:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__100__csr_addr;
+        SData/*11:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__101__csr;
+        SData/*11:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__102__csr_addr;
+        SData/*11:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__103__csr;
+        SData/*11:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__104__csr_addr;
+        SData/*11:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__105__csr;
+        SData/*11:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__106__csr_addr;
+        SData/*11:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__107__csr;
+        SData/*11:0*/ __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__108__csr_addr;
         IData/*31:0*/ ibex_simple_system__DOT____Vcellout__u_ram__a_rdata_o;
         IData/*31:0*/ ibex_simple_system__DOT__u_bus__DOT____Vlvbound4;
         IData/*31:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__register_file_i__DOT____Vlvbound2;
         IData/*28:0*/ ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT____Vcellinp__mcounters_variable_i__counter_inc_i;
-        IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__10__jump_target;
-        IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__14__jump_target;
-        IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__21__jump_target;
-        IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__42__jump_target;
-        IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_b_insn__70__branch_target;
-        IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_b_insn__70__imm;
+        IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__11__jump_target;
+        IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__15__jump_target;
+        IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__22__jump_target;
+        IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__43__jump_target;
         IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_b_insn__71__branch_target;
         IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_b_insn__71__imm;
     };
@@ -771,6 +780,8 @@ VL_MODULE(Vibex_simple_system) {
         IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_b_insn__74__imm;
         IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_b_insn__75__branch_target;
         IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_b_insn__75__imm;
+        IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_b_insn__76__branch_target;
+        IData/*31:0*/ __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_b_insn__76__imm;
         IData/*31:0*/ __Vdly__ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__cycle;
         IData/*17:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__cs_registers_i__DOT__mie_q;
         IData/*31:0*/ __Vm_traceActivity;
@@ -825,10 +836,10 @@ VL_MODULE(Vibex_simple_system) {
         SData/*15:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_posit_cooprocessor__DOT__PUNIT1__PADD__DOT__uut_de1__ls__DOT__tmp[4];
         SData/*15:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_posit_cooprocessor__DOT__PUNIT1__PADD__DOT__uut_de2__ls__DOT__tmp[4];
         SData/*15:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_posit_cooprocessor__DOT__PUNIT1__PMULT__DOT__uut_de1__ls__DOT__tmp[4];
-        SData/*15:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_posit_cooprocessor__DOT__PUNIT1__PMULT__DOT__uut_de2__ls__DOT__tmp[4];
-        SData/*15:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_posit_cooprocessor__DOT__PUNIT1__PDIV__DOT__uut_de1__ls__DOT__tmp[4];
     };
     struct {
+        SData/*15:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_posit_cooprocessor__DOT__PUNIT1__PMULT__DOT__uut_de2__ls__DOT__tmp[4];
+        SData/*15:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_posit_cooprocessor__DOT__PUNIT1__PDIV__DOT__uut_de1__ls__DOT__tmp[4];
         SData/*15:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_posit_cooprocessor__DOT__PUNIT1__PDIV__DOT__uut_de2__ls__DOT__tmp[4];
         SData/*15:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_posit_cooprocessor__DOT__PUNIT2__PADD__DOT__uut_de1__ls__DOT__tmp[4];
         SData/*15:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_posit_cooprocessor__DOT__PUNIT2__PADD__DOT__uut_de2__ls__DOT__tmp[4];
@@ -849,47 +860,48 @@ VL_MODULE(Vibex_simple_system) {
         SData/*15:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_posit_cooprocessor__DOT__PUNIT4__PDIV__DOT__uut_de1__ls__DOT__tmp[4];
         SData/*15:0*/ __Vchglast__TOP__ibex_simple_system__DOT__u_posit_cooprocessor__DOT__PUNIT4__PDIV__DOT__uut_de2__ls__DOT__tmp[4];
     };
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cr_insn__5__mnemonic;
     std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cr_insn__6__mnemonic;
     std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cr_insn__7__mnemonic;
     std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cr_insn__8__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__10__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__14__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__21__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__42__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__96__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__96__csr_name;
-    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__97__Vfuncout;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__98__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__98__csr_name;
-    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__99__Vfuncout;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__100__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__100__csr_name;
-    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__101__Vfuncout;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__102__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__102__csr_name;
-    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__103__Vfuncout;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__104__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__104__csr_name;
-    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__105__Vfuncout;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__106__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__106__csr_name;
-    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__107__Vfuncout;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_load_insn__121__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_mnemonic__122__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_store_insn__123__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_mnemonic__124__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cr_insn__9__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__11__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__15__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__22__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_cb_insn__43__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__97__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__97__csr_name;
+    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__98__Vfuncout;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__99__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__99__csr_name;
+    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__100__Vfuncout;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__101__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__101__csr_name;
+    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__102__Vfuncout;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__103__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__103__csr_name;
+    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__104__Vfuncout;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__105__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__105__csr_name;
+    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__106__Vfuncout;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__107__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_csr_insn__107__csr_name;
+    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_csr_name__108__Vfuncout;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_load_insn__122__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_mnemonic__123__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_store_insn__124__mnemonic;
     std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_mnemonic__125__mnemonic;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_fence__126__predecessor;
-    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_fence__126__successor;
-    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_fence_description__127__Vfuncout;
-    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_fence_description__127__desc;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_mnemonic__126__mnemonic;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_fence__127__predecessor;
+    std::string __Vtask_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__decode_fence__127__successor;
     std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_fence_description__128__Vfuncout;
     std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_fence_description__128__desc;
+    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_fence_description__129__Vfuncout;
+    std::string __Vfunc_ibex_simple_system__DOT__u_core__DOT__u_ibex_tracer__DOT__get_fence_description__129__desc;
     static CData/*0:0*/ __Vtable1_ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__adder_op_b_negate[64];
     static CData/*0:0*/ __Vtable2_ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__cmp_signed[64];
     static CData/*0:0*/ __Vtable3_ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__cmp_result[256];
-    static CData/*3:0*/ __Vtable4_ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__load_store_unit_i__DOT__data_be[32];
+    static CData/*0:0*/ __Vtable4_ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__ex_block_i__DOT__alu_i__DOT__shift_left[64];
+    static CData/*3:0*/ __Vtable5_ibex_simple_system__DOT__u_core__DOT__u_ibex_core__DOT__load_store_unit_i__DOT__data_be[32];
     
     // INTERNAL VARIABLES
     // Internals; generally not touched by application code
@@ -919,6 +931,7 @@ VL_MODULE(Vibex_simple_system) {
     static void _eval_initial_loop(Vibex_simple_system__Syms* __restrict vlSymsp);
   public:
     void __Vconfigure(Vibex_simple_system__Syms* symsp, bool first);
+    static void __Vdpiexp_ibex_simple_system__DOT__mhpmcounter_get_TOP(Vibex_simple_system__Syms* __restrict vlSymsp, const IData/*31:0*/ index, QData/*63:0*/(&  mhpmcounter_get__Vfuncrtn));
     static void __Vdpiexp_ibex_simple_system__DOT__u_ram__DOT__simutil_verilator_memload_TOP(Vibex_simple_system__Syms* __restrict vlSymsp, const std::string(&  file));
     static void __Vdpiexp_ibex_simple_system__DOT__u_ram__DOT__simutil_verilator_set_mem_TOP(Vibex_simple_system__Syms* __restrict vlSymsp, const IData/*31:0*/ index, const IData/*31:0*/ val, IData/*31:0*/(&  simutil_verilator_set_mem__Vfuncrtn));
   private:
@@ -955,6 +968,7 @@ VL_MODULE(Vibex_simple_system) {
     static void _sequent__TOP__9(Vibex_simple_system__Syms* __restrict vlSymsp);
     static void _settle__TOP__1(Vibex_simple_system__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _settle__TOP__4(Vibex_simple_system__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    static long long mhpmcounter_get(int index);
     static void simutil_verilator_memload(const char* file);
     static int simutil_verilator_set_mem(int index, const svLogicVecVal* val);
     static void traceChgThis(Vibex_simple_system__Syms* __restrict vlSymsp, VerilatedFst* vcdp, uint32_t code);

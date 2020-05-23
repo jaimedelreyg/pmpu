@@ -111,8 +111,8 @@ Vibex_simple_system__Syms::Vibex_simple_system__Syms(Vibex_simple_system* topp, 
     __Vscope_ibex_simple_system__u_ram.configure(this, name(), "ibex_simple_system.u_ram", "u_ram", VerilatedScope::SCOPE_OTHER);
     // Setup export functions
     for (int __Vfinal=0; __Vfinal<2; __Vfinal++) {
+        __Vscope_ibex_simple_system.exportInsert(__Vfinal, "mhpmcounter_get", (void*)(&Vibex_simple_system::__Vdpiexp_ibex_simple_system__DOT__mhpmcounter_get_TOP));
         __Vscope_ibex_simple_system__u_ram.exportInsert(__Vfinal, "simutil_verilator_memload", (void*)(&Vibex_simple_system::__Vdpiexp_ibex_simple_system__DOT__u_ram__DOT__simutil_verilator_memload_TOP));
         __Vscope_ibex_simple_system__u_ram.exportInsert(__Vfinal, "simutil_verilator_set_mem", (void*)(&Vibex_simple_system::__Vdpiexp_ibex_simple_system__DOT__u_ram__DOT__simutil_verilator_set_mem_TOP));
-        __Vscope_ibex_simple_system.varInsert(__Vfinal,"mhpmcounter_vals", &(TOPp->ibex_simple_system__DOT__mhpmcounter_vals), VLVT_UINT64,VLVD_NODIR|VLVF_PUB_RW,2 ,63,0 ,31,0);
     }
 }

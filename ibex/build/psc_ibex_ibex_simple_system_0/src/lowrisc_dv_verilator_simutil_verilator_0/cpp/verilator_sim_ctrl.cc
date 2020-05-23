@@ -76,7 +76,7 @@ void VerilatorSimCtrl::RunSimulation() {
   // Print simulation speed info
   PrintStatistics();
   // Print helper message for tracing
-  if (TracingEnabled()) {
+  if (TracingEverEnabled()) {
     std::cout << std::endl
               << "You can view the simulation traces by calling" << std::endl
               << "$ gtkwave " << GetTraceFileName() << std::endl;
@@ -103,9 +103,9 @@ void VerilatorSimCtrl::RegisterExtension(SimCtrlExtension *ext) {
 VerilatorSimCtrl::VerilatorSimCtrl()
     : top_(nullptr),
       time_(0),
-      tracing_enabled_(true),
-      tracing_enabled_changed_(true),
-      tracing_ever_enabled_(true),
+      tracing_enabled_(false),
+      tracing_enabled_changed_(false),
+      tracing_ever_enabled_(false),
       tracing_possible_(VM_TRACE),
       initial_reset_delay_cycles_(2),
       reset_duration_cycles_(2),
