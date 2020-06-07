@@ -15,6 +15,8 @@ create_template fusesoc.conf.template > fusesoc.conf
 
 rm -r build/*
 
+echo "Executing..."
+
 fusesoc library add psc_posit_cooprocessor . >/dev/null 2>&1
 fusesoc library add ibex ${PATH_IBEX} >/dev/null 2>&1
 fusesoc --config=fusesoc.conf run --target=sim --setup --build psc:ibex:ibex_simple_system --RV32M=1 --RV32E=0 >/dev/null 2>&1
