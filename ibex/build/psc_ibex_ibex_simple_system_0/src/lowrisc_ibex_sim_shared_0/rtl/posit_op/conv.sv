@@ -25,20 +25,25 @@ module conv #(
   //parameter Bs=log2(N);
   parameter es = 2;
 
-  posit_add #(.N(N), .es(es)) padd (add1, add2, start, out1, inf, zero, done);
-//////////  posit_mult #(.N(N), .es(es)) pmul (mul1, mul2, start, out2, inf, zero, done);
-//////////////  posit_div #(.N(N), .es(es)) pdiv (div1, div2, start, out3, inf, zero, done);
+  posit_add #(.N(N), .es(es)) padd (add1, add2, start, out1, inf1, zero1, done1);
+  posit_mult #(.N(N), .es(es)) pmul (mul1, mul2, start, out2, inf2, zero2, done2);
+  posit_div #(.N(N), .es(es)) pdiv (div1, div2, start, out3, inf3, zero3, done3);
 
   logic        rvalid_d, rvalid_q;
-  logic [N-1:0] a_d, add1 = 0, mul1 = 0, div1 = 0;
-  logic [N-1:0] b_d, add2 = 0, mul2 = 0, div2 = 0;
+  logic [N-1:0] a_d, add1, mul1, div1;
+  logic [N-1:0] b_d, add2, mul2, div2;
   logic [N-1:0] a_q;
   logic [N-1:0] b_q;
   logic [N-1:0] out;
   logic [2:0] op_q, op_d;
-  logic [N-1:0] out1, out2, out3;
+  logic [N-1:0] out1 = 0, out2 = 0, out3 = 0;
   logic [31:0] rdata_d, rdata_q;
-  logic start, inf, zero, done;
+  logic start = 1;
+  logic inf, zero, done;
+  //TODO: Meter detecciones cuando se active el flag de zero o inf
+  logic inf1 = 0, inf2 = 0, inf3 = 0;
+  logic zero1 = 0, zero2 = 0, zero3 = 0;
+  logic done1 = 0, done2 = 0, done3 = 0;
 
   logic conv_we, ab_we, op_we;
 
@@ -75,16 +80,25 @@ module conv #(
                 ADD: begin
 			add1 <= a_q;
 			add2 <= b_q;
+                        inf <= inf1;
+			done <= done1;
+			zero <= zero1;
                         out <= out1;
 		end
                 MUL: begin
 			mul1 <= a_q;
 			mul2 <= b_q;
+                        inf <= inf2;
+			done <= done2;
+			zero <= zero2;
                         out <= out2;
 		end
                 DIV: begin
 			div1 <= a_q;
 			div2 <= b_q;
+                        inf <= inf3;
+			done <= done3;
+			zero <= zero3;
                         out <= out3;
 		end
                 default: begin
@@ -96,7 +110,7 @@ module conv #(
   assign start = conv_be_i;
 
 
-  //assign out = out1 + out2 + out3;  
+  //assign out = inf;  
 
   //assign out = conv_addr_i[31:0];
 
