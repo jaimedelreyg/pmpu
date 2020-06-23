@@ -12,7 +12,7 @@ endfunction
 
 parameter N = 16;
 parameter Bs = log2(N);
-parameter es = 3;
+parameter es = 2;
 parameter NR_Iter = 1;							// 2 for 32 bits, 1 for 16 bits, 0 for 8bits
 parameter NRB = 2**NR_Iter;
 parameter M = N-es;

@@ -1,5 +1,3 @@
-//Authors: Manish Kumar Jaiswal, and Hayden K.-H. So
-
 module posit_add (in1, in2, start, out, inf, zero, done);
 
 function [31:0] log2;

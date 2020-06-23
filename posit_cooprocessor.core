@@ -1,0 +1,26 @@
+CAPI=2:
+# Copyright lowRISC contributors.
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+name: "psc:ibex:posit_cooprocessor"
+description: "RTL for posit cooprocessor"
+filesets:
+  files_sim_v:
+    depend:
+      - lowrisc:prim:assert
+    files:
+      - ./rtl/global_memory.v
+      - ./rtl/register_file.v
+      - ./rtl/posit_unit.v
+      - ./rtl/posit_vector_processor.v
+      - ./rtl/posit_single_processor.sv
+      - ./rtl/posit_div.v
+      - ./rtl/posit_mult.v
+      - ./rtl/posit_add.v
+    file_type: verilogSource
+
+targets:
+  default:
+    filesets:
+      - files_sim_v
+

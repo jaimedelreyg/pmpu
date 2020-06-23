@@ -39,10 +39,11 @@ module ibex_simple_system (
     Ram,
     SimCtrl,
     Timer,
-    PositCooprocessor
+    PositCooprocessor,
+    PositSingleProcessor
   } bus_device_e;
 
-  localparam NrDevices = 4;
+  localparam NrDevices = 5;
   localparam NrHosts = 1;
 
   // interrupts
@@ -80,6 +81,8 @@ module ibex_simple_system (
   assign cfg_device_addr_mask[Timer] = ~32'h3FF; // 1 kB
   assign cfg_device_addr_base[PositCooprocessor] = 32'h40000;
   assign cfg_device_addr_mask[PositCooprocessor] = ~32'h3FF; // 1 kB
+  assign cfg_device_addr_base[PositSingleProcessor] = 32'h50000;
+  assign cfg_device_addr_mask[PositSingleProcessor] = ~32'h3FF; // 1 kB
 
   // Instruction fetch signals
   logic instr_req;
@@ -263,6 +266,20 @@ module ibex_simple_system (
         .gpup_rvalid_o (device_rvalid[PositCooprocessor]),
         .gpup_rdata_o  (device_rdata[PositCooprocessor])
       );
+
+    posit_single_processor #(
+    ) u_posit_single_processor (
+       .clk_i          (clk_sys),
+       .rst_ni         (rst_sys_n),
+
+       .conv_req_i    (device_req[PositSingleProcessor]),
+       .conv_we_i     (device_we[PositSingleProcessor]),
+       .conv_be_i     (device_be[PositSingleProcessor]),
+       .conv_addr_i   (device_addr[PositSingleProcessor]),
+       .conv_wdata_i  (device_wdata[PositSingleProcessor]),
+       .conv_rvalid_o (device_rvalid[PositSingleProcessor]),
+       .conv_rdata_o  (device_rdata[PositSingleProcessor])
+   );
 
   export "DPI-C" function mhpmcounter_get;
 

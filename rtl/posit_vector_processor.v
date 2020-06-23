@@ -247,6 +247,11 @@ always @(posedge clk) begin
                   rf3ra2 <= q_instr[13:12];
                   rf4ra2 <= q_instr[13:12];
 
+                  rf1wa <= q_instr[5:4];
+                  rf2wa <= q_instr[5:4];
+                  rf3wa <= q_instr[5:4];
+                  rf4wa <= q_instr[5:4];
+
                   rf1we <= 0;
                   rf2we <= 0;
                   rf3we <= 0;
@@ -295,21 +300,11 @@ always @(posedge clk) begin
                   unit4_in2 <= rf4rd2;
                   unit4_start <= 1;
 
+                  wc_warp <= wc_warp + 1;
+
                 end
 
                 2'b10: begin
-                    op_pipeline <= 2'b11;
-
-                    rf1wa <= q_instr[5:4];
-                    rf2wa <= q_instr[5:4];
-                    rf3wa <= q_instr[5:4];
-                    rf4wa <= q_instr[5:4];
-
-                    wc_warp <= wc_warp + 1;
-
-                end
-
-                2'b11: begin
                   if(unit1_done && unit2_done && unit3_done && unit4_done) begin
 
                     op_pipeline <= 2'b00;
